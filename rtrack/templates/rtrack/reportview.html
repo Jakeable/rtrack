@@ -119,7 +119,7 @@
         <!-- <p>Associated Accounts  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-account-modal">Add account</button></p> -->
 
         {% for udata in userlinkdata %}
-            <p><a href="{% url 'user_page' udata.name %}">{{ udata.name }}</a> - {{ udata.timestamp }} - <a href="{% url 'remove_user_link' report_data.id udata.name %}">delete association</a></p>
+            <p><a href="{% url 'user_page' udata.name %}">{{ udata.name }}</a> - {{ udata.timestamp }} (created by {{ udata.author }}) - <a href="{% url 'remove_user_link' report_data.id udata.name %}">delete association</a></p>
         {% endfor %}
     {% else %}
         <p>No users associated with this report.  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-account-modal">Add account</button></p>
@@ -139,7 +139,7 @@
     {% if urllinkdata %}
 
         {% for udata in urllinkdata %}
-            <p><a href="{{ udata.url }}">{{ udata.url }}</a> - {{ udata.timestamp }}</p>
+            <p><a href="{{ udata.url }}">{{ udata.url }}</a> - {{ udata.timestamp }} (created by {{ udata.author }})</p>
         {% endfor %}
     {% else %}
         <p>No URLs associated with this report.  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-url-modal">Add URL</button></p>
