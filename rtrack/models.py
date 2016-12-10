@@ -17,6 +17,7 @@ class Username(models.Model):
 class Report(models.Model):
     title = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User)
     last_updated = models.DateTimeField(auto_now=True)
     description = models.TextField()
 
@@ -26,6 +27,7 @@ class Report(models.Model):
 
 class UserReportLink(models.Model):
     name = models.ForeignKey(Username)
+    author = models.ForeignKey(User)
     timestamp = models.DateTimeField(auto_now_add=True)
     report = models.ForeignKey(Report)
 
@@ -41,6 +43,7 @@ class UserReportLinkFormModel(models.Model):
 
 class UrlReportLink(models.Model):
     url = models.CharField(max_length=200)
+    author = models.ForeignKey(User)
     timestamp = models.DateTimeField(auto_now_add=True)
     report = models.ForeignKey(Report)
 
